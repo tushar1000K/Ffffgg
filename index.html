@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultra Pro Stylish Name</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="app-bar">
+  <h1>Ultra Pro Fonts</h1>
+  <a href="https://t.me/BotMasterHubsbot" class="telegram-btn-header">Join Telegram</a>
+</header>
+
+<div class="input-container">
+  <input type="text" id="textInput" placeholder="Type your name..." value="ABC">
+</div>
+
+<main class="container">
+
+  <div class="myfont" onclick="copyText(this)">
+    <span>Bold</span>
+    <p class="styled" data-style="bold">ABC</p>
+  </div>
+
+  <div class="myfont" onclick="copyText(this)">
+    <span>Italic</span>
+    <p class="styled" data-style="italic">ABC</p>
+  </div>
+
+  <div class="myfont" onclick="copyText(this)">
+    <span>Cursive</span>
+    <p class="styled" data-style="cursive">ABC</p>
+  </div>
+
+  <div class="myfont" onclick="copyText(this)">
+    <span>Square</span>
+    <p class="styled" data-style="square">ABC</p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>More premium tools on Telegram</p>
+  <a href="https://t.me/BotMasterHubsbot" class="telegram-btn">Join Channel</a>
+</footer>
+
+<script>
+const input = document.getElementById("textInput");
+const outputs = document.querySelectorAll(".styled");
+
+const fontMap = {
+  bold: {
+    a:"𝐚",b:"𝐛",c:"𝐜",d:"𝐝",e:"𝐞",f:"𝐟",g:"𝐠",h:"𝐡",i:"𝐢",j:"𝐣",k:"𝐤",l:"𝐥",m:"𝐦",
+    n:"𝐧",o:"𝐨",p:"𝐩",q:"𝐪",r:"𝐫",s:"𝐬",t:"𝐭",u:"𝐮",v:"𝐯",w:"𝐰",x:"𝐱",y:"𝐲",z:"𝐳",
+    A:"𝐀",B:"𝐁",C:"𝐂",D:"𝐃",E:"𝐄",F:"𝐅",G:"𝐆",H:"𝐇",I:"𝐈",J:"𝐉",K:"𝐊",L:"𝐋",M:"𝐌",
+    N:"𝐍",O:"𝐎",P:"𝐏",Q:"𝐐",R:"𝐑",S:"𝐒",T:"𝐓",U:"𝐔",V:"𝐕",W:"𝐖",X:"𝐗",Y:"𝐘",Z:"𝐙"
+  },
+  italic: {
+    a:"𝘢",b:"𝘣",c:"𝘤",d:"𝘥",e:"𝘦",f:"𝘧",g:"𝘨",h:"𝘩",i:"𝘪",j:"𝘫",k:"𝘬",l:"𝘭",m:"𝘮",
+    n:"𝘯",o:"𝘰",p:"𝘱",q:"𝘲",r:"𝘳",s:"𝘴",t:"𝘵",u:"𝘶",v:"𝘷",w:"𝘸",x:"𝘹",y:"𝘺",z:"𝘻",
+    A:"𝘈",B:"𝘉",C:"𝘊",D:"𝘋",E:"𝘌",F:"𝘍",G:"𝘎",H:"𝘏",I:"𝘐",J:"𝘑",K:"𝘒",L:"𝘓",M:"𝘔",
+    N:"𝘕",O:"𝘖",P:"𝘗",Q:"𝘘",R:"𝘙",S:"𝘚",T:"𝘛",U:"𝘜",V:"𝘝",W:"𝘞",X:"𝘟",Y:"𝘠",Z:"𝘡"
+  },
+  cursive: {
+    a:"𝓪",b:"𝓫",c:"𝓬",d:"𝓭",e:"𝓮",f:"𝓯",g:"𝓰",h:"𝓱",i:"𝓲",j:"𝓳",k:"𝓴",l:"𝓵",m:"𝓶",
+    n:"𝓷",o:"𝓸",p:"𝓹",q:"𝓺",r:"𝓻",s:"𝓼",t:"𝓽",u:"𝓾",v:"𝓿",w:"𝔀",x:"𝔁",y:"𝔂",z:"𝔃",
+    A:"𝓐",B:"𝓑",C:"𝓒",D:"𝓓",E:"𝓔",F:"𝓕",G:"𝓖",H:"𝓗",I:"𝓘",J:"𝓙",K:"𝓚",L:"𝓛",M:"𝓜",
+    N:"𝓝",O:"𝓞",P:"𝓟",Q:"𝓠",R:"𝓡",S:"𝓢",T:"𝓣",U:"𝓤",V:"𝓥",W:"𝓦",X:"𝓧",Y:"𝓨",Z:"𝓩"
+  },
+  square: {
+    A:"🅐",B:"🅑",C:"🅒",D:"🅓",E:"🅔",F:"🅕",G:"🅖",H:"🅗",I:"🅘",J:"🅙",K:"🅚",L:"🅛",
+    M:"🅜",N:"🅝",O:"🅞",P:"🅟",Q:"🅠",R:"🅡",S:"🅢",T:"🅣",U:"🅤",V:"🅥",W:"🅦",X:"🅧",
+    Y:"🅨",Z:"🅩",a:"🅐",b:"🅑",c:"🅒",d:"🅓",e:"🅔",f:"🅕",g:"🅖",h:"🅗",i:"🅘",j:"🅙",
+    k:"🅚",l:"🅛",m:"🅜",n:"🅝",o:"🅞",p:"🅟",q:"🅠",r:"🅡",s:"🅢",t:"🅣",u:"🅤",
+    v:"🅥",w:"🅦",x:"🅧",y:"🅨",z:"🅩"
+  }
+};
+
+function convert(text, style){
+  return text.split("").map(ch => fontMap[style][ch] || ch).join("");
+}
+
+function update(){
+  outputs.forEach(el=>{
+    el.innerText = convert(input.value, el.dataset.style);
+  });
+}
+
+input.addEventListener("input", update);
+update();
+
+function copyText(card){
+  const text = card.querySelector("p").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+</script>
+
+</body>
+</html>
